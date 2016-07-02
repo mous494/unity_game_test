@@ -28,7 +28,7 @@ public class PlayerMove : MonoBehaviour {
 			//本来ならジャンプの処理
 		
 		}
-		if (Input.GetAxis("Vertical")>0) {
+		if (Input.GetAxis("Vertical")!=0) {
 			animator.SetBool ("Running", true);
 		} else {
 		
