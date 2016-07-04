@@ -3,6 +3,8 @@ using System.Collections;
 
 public class PlayerMove : MonoBehaviour {
 
+	public distanceText dt;
+
 	// Use this for initialization
 	public float speed = 15.0F;
 	public float jumpspeed = 8.0F;
@@ -40,5 +42,7 @@ public class PlayerMove : MonoBehaviour {
 		transform.Rotate (0, Input.GetAxis("Mouse X")*mouse_sense, 0);
 		GameObject camera_parent = Camera.main.transform.parent.gameObject;
 		camera_parent.transform.Rotate (0, 0, Input.GetAxis ("Mouse Y") * mouse_sense);
+
+		dt.GetComponent<distanceText> ().distance += Mathf.Sqrt (Mathf.Pow (moveDirection.x*Time.deltaTime, 2) + Mathf.Pow (moveDirection.z*Time.deltaTime, 2));
 	}
 }
