@@ -26,8 +26,15 @@ public class PlayerMove : MonoBehaviour {
 		if (controller.isGrounded) {
 			if (finish == false) {
 				moveDirection = new Vector3 (Input.GetAxis ("Horizontal"), 0, Input.GetAxis ("Vertical"));
+				if (Input.GetAxis ("Vertical") != 0) {
+					animator.SetBool ("Running", true);
+				} else {		
+					animator.SetBool ("Running", false);
+				}
+			
 			} else {
 				moveDirection = Vector3.zero;
+				animator.SetBool ("Running", false);
 			}
 
 			moveDirection = transform.TransformDirection (moveDirection);
@@ -35,11 +42,7 @@ public class PlayerMove : MonoBehaviour {
 			//本来ならジャンプの処理
 		
 		
-			if (Input.GetAxis ("Vertical") != 0) {
-				animator.SetBool ("Running", true);
-			} else {		
-				animator.SetBool ("Running", false);
-			}
+
 		} 
 		moveDirection.y -= gravity * Time.deltaTime;
 		controller.Move (moveDirection * Time.deltaTime);

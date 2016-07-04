@@ -16,6 +16,7 @@ public class lastspot : MonoBehaviour {
 	void OnTriggerEnter(Collider collider){
 		if (last == true) {
 			pm.GetComponent<PlayerMove> ().finish = true;
+			Destroy (gameObject);
 		
 		}
 	}
