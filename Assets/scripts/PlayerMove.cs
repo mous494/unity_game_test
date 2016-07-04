@@ -12,6 +12,7 @@ public class PlayerMove : MonoBehaviour {
 	public float mouse_sense = 5.0F;
 	public Vector3 moveDirection = Vector3.zero;
 	private Animator animator;
+	public bool finish;
 	void Start () {
 		animator = GetComponent<Animator>();
 	
@@ -22,20 +23,24 @@ public class PlayerMove : MonoBehaviour {
 
 		//移動の設定
 		CharacterController controller = GetComponent<CharacterController> ();
-		if (controller.isGrounded) 
-		{
-			moveDirection = new Vector3 (Input.GetAxis ("Horizontal"), 0, Input.GetAxis ("Vertical"));
+		if (controller.isGrounded) {
+			if (finish == false) {
+				moveDirection = new Vector3 (Input.GetAxis ("Horizontal"), 0, Input.GetAxis ("Vertical"));
+			} else {
+				moveDirection = Vector3.zero;
+			}
+
 			moveDirection = transform.TransformDirection (moveDirection);
 			moveDirection *= speed;
 			//本来ならジャンプの処理
 		
-		}
-		if (Input.GetAxis("Vertical")!=0) {
-			animator.SetBool ("Running", true);
-		} else {
 		
-			animator.SetBool ("Running", false);
-		}
+			if (Input.GetAxis ("Vertical") != 0) {
+				animator.SetBool ("Running", true);
+			} else {		
+				animator.SetBool ("Running", false);
+			}
+		} 
 		moveDirection.y -= gravity * Time.deltaTime;
 		controller.Move (moveDirection * Time.deltaTime);
 

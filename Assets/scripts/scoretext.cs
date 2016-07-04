@@ -4,7 +4,7 @@ using UnityEngine.UI;
 
 public class scoretext : MonoBehaviour {
 	public int score = 0;
-
+	public lastspot ls;
 
 	// Use this for initialization
 	void Start () {
@@ -13,7 +13,10 @@ public class scoretext : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		this.GetComponent<Text>().text = "Score:" + score.ToString();
+		this.GetComponent<Text>().text = "Points:" + score.ToString();
+		if (score == 5) {
+			ls.GetComponent<lastspot> ().last = true;
+		}
 
 
 	}
