@@ -15,6 +15,7 @@ public class PlayerMove : MonoBehaviour {
 	public bool finish;
 	void Start () {
 		animator = GetComponent<Animator>();
+		FadeManager.Instance.DebugMode = false;
 	
 	}
 	
@@ -35,6 +36,7 @@ public class PlayerMove : MonoBehaviour {
 			} else {
 				moveDirection = Vector3.zero;
 				animator.SetBool ("Running", false);
+				FadeManager.Instance.LoadLevel ("result", 1.0F);
 			}
 
 			moveDirection = transform.TransformDirection (moveDirection);
