@@ -18,6 +18,6 @@ public class lastspot : MonoBehaviour {
 			pm.GetComponent<PlayerMove> ().finish = true;
 			Destroy (gameObject);
 		
-		}
+		} 
 	}
 }

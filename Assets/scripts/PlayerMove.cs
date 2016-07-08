@@ -16,7 +16,7 @@ public class PlayerMove : MonoBehaviour {
 	void Start () {
 		animator = GetComponent<Animator>();
 		FadeManager.Instance.DebugMode = false;
-	
+
 	}
 	
 	// Update is called once per frame
@@ -36,7 +36,7 @@ public class PlayerMove : MonoBehaviour {
 			} else {
 				moveDirection = Vector3.zero;
 				animator.SetBool ("Running", false);
-				FadeManager.Instance.LoadLevel ("result", 1.0F);
+				FadeManager.Instance.LoadLevel ("result", 0.5F);
 			}
 
 			moveDirection = transform.TransformDirection (moveDirection);
@@ -53,6 +53,6 @@ public class PlayerMove : MonoBehaviour {
 		GameObject camera_parent = Camera.main.transform.parent.gameObject;
 		camera_parent.transform.Rotate (0, 0, Input.GetAxis ("Mouse Y") * mouse_sense);
 
-		dt.GetComponent<distanceText> ().distance += Mathf.Sqrt (Mathf.Pow (moveDirection.x*Time.deltaTime, 2) + Mathf.Pow (moveDirection.z*Time.deltaTime, 2));
+		distanceText.distance += Mathf.Sqrt (Mathf.Pow (moveDirection.x*Time.deltaTime, 2) + Mathf.Pow (moveDirection.z*Time.deltaTime, 2));
 	}
 }

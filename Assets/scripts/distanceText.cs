@@ -2,12 +2,12 @@
 using System.Collections;
 using UnityEngine.UI;
 public class distanceText : MonoBehaviour {
-	public float distance=0;
+	public static float distance=0;
 
 
 	// Use this for initialization
 	void Start () {
-		DontDestroyOnLoad (gameObject);
+		//DontDestroyOnLoad (gameObject);
 	
 	}
 	
