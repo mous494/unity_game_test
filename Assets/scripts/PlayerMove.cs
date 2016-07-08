@@ -3,7 +3,8 @@ using System.Collections;
 
 public class PlayerMove : MonoBehaviour {
 
-	public distanceText dt;
+	public scoretext st;
+
 
 	// Use this for initialization
 	public float speed = 15.0F;
@@ -54,5 +55,13 @@ public class PlayerMove : MonoBehaviour {
 		camera_parent.transform.Rotate (0, 0, Input.GetAxis ("Mouse Y") * mouse_sense);
 
 		distanceText.distance += Mathf.Sqrt (Mathf.Pow (moveDirection.x*Time.deltaTime, 2) + Mathf.Pow (moveDirection.z*Time.deltaTime, 2));
+	}
+
+	void OnTriggerEnter(Collider hit){
+		Debug.Log ("hit");
+		if (hit.gameObject.CompareTag ("point")) {
+			st.score++;
+		}
+	
 	}
 }

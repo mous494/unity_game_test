@@ -7,17 +7,20 @@ public class initialset : MonoBehaviour {
 
 	//ポイント保持用
 	private int[,] points = null;
-
-
 	int num_point;
-
 	int length;
+
+	public GameObject aura_prefab;
 	// Use this for initialization
 	void Start () {
 		points=readCSV ("/points.csv");
-//		for (int i = 0; i < length; i++) {
-//			Debug.Log (points [i, 0].ToString () + "," +points [i, 1].ToString ());
-//		}
+		for (int i = 0; i < length; i++) {
+			//Debug.Log (points [i, 0].ToString () + "," +points [i, 1].ToString ());
+			Vector3 pos = new Vector3(points[i,0],0,points[i,1]);
+			Instantiate (aura_prefab, pos,Quaternion.identity);		
+		
+		}
+
 
 	
 	}
