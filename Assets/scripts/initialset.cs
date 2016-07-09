@@ -8,19 +8,31 @@ public class initialset : MonoBehaviour {
 	//ポイント保持用
 	private int[,] points = null;
 	int num_point;
-	int length;
+	public int length;
+
+
 
 	public GameObject aura_prefab;
-	// Use this for initialization
+    private GameObject character;
+    private GameObject firstpos;
+
+    // Use this for initialization
 	void Start () {
 		points=readCSV ("/points.csv");
-		for (int i = 0; i < length; i++) {
+		for (int i = 1; i < length; i++) {
 			//Debug.Log (points [i, 0].ToString () + "," +points [i, 1].ToString ());
 			Vector3 pos = new Vector3(points[i,0],0,points[i,1]);
 			Instantiate (aura_prefab, pos,Quaternion.identity);		
 		
 		}
+        character =  GameObject.Find("unitychan");
+        firstpos = GameObject.Find("firstpos");
 
+        Vector3 chara = new Vector3(points[0, 0], 0, points[0, 1]);
+
+
+        firstpos.GetComponent<Transform>().position = chara;
+        character.GetComponent<CharacterController>().Move(chara);
 
 	
 	}
