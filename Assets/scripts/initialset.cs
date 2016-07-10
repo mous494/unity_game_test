@@ -33,6 +33,8 @@ public class initialset : MonoBehaviour {
 
         firstpos.GetComponent<Transform>().position = chara;
         character.GetComponent<CharacterController>().Move(chara);
+        Cursor.visible = false;
+        
 
 	
 	}

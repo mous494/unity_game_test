@@ -8,6 +8,7 @@ public class showresult : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 
+        Cursor.visible = true;
 		txt.text = "Distance:"+ distanceText.distance;
 
 		
