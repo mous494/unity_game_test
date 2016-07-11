@@ -29,7 +29,7 @@ public class PlayerMove : MonoBehaviour {
 
 		//移動の設定
 		CharacterController controller = GetComponent<CharacterController> ();
-		if (controller.isGrounded) {
+		if (true) {
 			if (finish == false) {
 				moveDirection = new Vector3 (Input.GetAxis ("Horizontal"), 0, Input.GetAxis ("Vertical"));
 				if (Input.GetAxis ("Vertical") != 0) {
