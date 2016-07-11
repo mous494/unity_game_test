@@ -33,6 +33,7 @@ public class initialset : MonoBehaviour {
 
         firstpos.GetComponent<Transform>().position = chara;
         character.GetComponent<CharacterController>().Move(chara);
+        character.GetComponent<PlayerMove>().old_pos = chara;
         Cursor.visible = false;
         
 

@@ -15,12 +15,14 @@ public class PlayerMove : MonoBehaviour {
 	private Animator animator;
 	public bool finish;
     private GameObject camera_parent;
+    public Vector3 old_pos;
     
 
     void Start () {
 		animator = GetComponent<Animator>();
 		FadeManager.Instance.DebugMode = false;
         camera_parent = Camera.main.transform.parent.gameObject;
+        
 
     }
 
@@ -58,8 +60,11 @@ public class PlayerMove : MonoBehaviour {
 		
 		camera_parent.transform.Rotate (0, 0, Input.GetAxis ("Mouse Y") * mouse_sense);
 
-		distanceText.distance += Mathf.Sqrt (Mathf.Pow (moveDirection.x*Time.deltaTime, 2) + Mathf.Pow (moveDirection.z*Time.deltaTime, 2));
-	}
+        //distanceText.distance += Mathf.Sqrt (Mathf.Pow (moveDirection.x*Time.deltaTime, 2) + Mathf.Pow (moveDirection.z*Time.deltaTime, 2));
+        distanceText.distance += Mathf.Sqrt(Mathf.Pow(old_pos.x - GetComponent<Transform>().position.x, 2) + Mathf.Pow(old_pos.z - GetComponent<Transform>().position.z, 2));
+        old_pos = GetComponent<Transform>().position;
+
+    }
 
 	void OnTriggerEnter(Collider hit){
 		
