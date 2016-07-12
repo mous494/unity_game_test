@@ -2,7 +2,7 @@
 using System.Collections;
 
 public class aura : MonoBehaviour {
-	public scoretext st;
+	//public scoretext st;
 	// Use this for initialization
 	void Start () {
 	
@@ -14,7 +14,7 @@ public class aura : MonoBehaviour {
 	}
 
 	void OnTriggerEnter(Collider other){
-		st.GetComponent<scoretext> ().score++;
+		//st.GetComponent<scoretext> ().score++;
 		Destroy (gameObject);
 
 	}

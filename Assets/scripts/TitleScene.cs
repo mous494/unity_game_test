@@ -18,7 +18,7 @@ public class TitleScene : MonoBehaviour {
 
 		
 		}
-		blinkText.color = new Color (1, 1, 1, Mathf.PingPong (Time.time, 1));
+		blinkText.color = new Color (1, 0, 0, Mathf.PingPong (Time.time, 1));
 	
 	}
 }
